@@ -15,5 +15,5 @@ if [ -z "$1" ]; then
  echo -n "Pilih Action yang akan dilakukan: "
  read ACT
  
- time yes | gcloud compute instances $ACT $NAMA
+ time yes | gcloud compute instances $ACT $NAMA --zone=$ZONE
 fi
