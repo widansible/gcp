@@ -7,9 +7,13 @@ readonly ZONE='asia-southeast1-a'
 if [ -z "$1" ]; then
  NAMA=$1
  while [ -z "$NAMA" ]; do
-  echo "masukan nama vm:"
+  echo -n "Masukan nama vm: "
   read NAMA
  done
- time yes | gcloud compute instances delete $NAMA
+ 
+ echo -e "Action:\n\n- start\n- stop\n"
+ echo -n "Pilih Action yang akan dilakukan: "
+ read ACT
+ 
+ time yes | gcloud compute instances $ACT $NAMA
 fi
-#time yes | gcloud compute firewall-rules delete default-allow-http
