@@ -3,16 +3,17 @@
 # Constants - CHANGE ME!
 readonly PROJECT='ansible-257005'
 readonly ZONE='asia-southeast1-a'
+NAMA=$1
 
 if [ -z "$1" ]; then
- NAMA=$1
  while [ -z "$NAMA" ]; do
   echo -n "masukan nama vm: "
   read NAMA
  done
+ else
  # Create GCE VM with disk storage
  gcloud compute instances create $NAMA \
-  --machine-type f1-micro \
+  --machine-type g1-small \
   --network default \
   --subnet default \
   --network-tier PREMIUM \
@@ -22,5 +23,6 @@ if [ -z "$1" ]; then
   --image-project centos-cloud \
   --boot-disk-size 10GB \
   --boot-disk-type pd-standard \
-  --boot-disk-device-name compute-disk
+  --boot-disk-device-name compute-disk \
+  --zone $ZONE
 fi

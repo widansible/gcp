@@ -11,13 +11,12 @@ if [ -z "$1" ]; then
   echo -n "Masukan nama vm: "
   read NAMA
  done
- else
- if [ -z "$2" ]; then
-  while [ -z "$ACT" ]; do
-   echo -e "Action:\n\n- start\n- stop\n"
-   echo -n "Pilih Action yang akan dilakukan: "
-   read ACT
-  done
- fi
- time yes | gcloud compute instances $ACT $NAMA --zone=$ZONE
 fi
+if [ -z "$2" ]; then
+ while [ -z "$ACT" ]; do
+  echo -e "\nAction: - start - stop - reset\n"
+  echo -n "Pilih Action yang akan dilakukan: "
+  read ACT
+ done
+fi
+time yes | gcloud compute instances $ACT $NAMA --zone=$ZONE
