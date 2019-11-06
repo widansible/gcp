@@ -10,7 +10,7 @@ if [ -z "$1" ]; then
   echo -n "masukan nama vm: "
   read NAMA
  done
- else
+fi
  # Create GCE VM with disk storage
  gcloud compute instances create $NAMA \
   --machine-type g1-small \
@@ -25,4 +25,3 @@ if [ -z "$1" ]; then
   --boot-disk-type pd-standard \
   --boot-disk-device-name compute-disk \
   --zone $ZONE
-fi
